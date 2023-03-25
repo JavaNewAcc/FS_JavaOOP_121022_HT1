@@ -3,8 +3,8 @@ package hometask.one;
 public class Main {
 
 	public static void main(String[] args) {
-		Phone phone1 = new Phone("Samsung", "S23", 6.1, 39999);
-		Phone phone2 = new Phone("IPhone", "14", 6.1, 35999);
+		Product phone1 = new Product("Samsung", "S23", 6.1, 39999);
+		Product phone2 = new Product("iPhone", "14", 6.1, 35999);
 		System.out.println("Характеристики та ціна на телефони в наявності:");
 		System.out.println(phone1);
 		System.out.println(phone2);

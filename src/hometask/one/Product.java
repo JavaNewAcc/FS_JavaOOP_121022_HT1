@@ -1,16 +1,16 @@
 package hometask.one;
 
-public class Phone {
+public class Product {
 	private String manufacturer;
 	private String model;
 	private double screenSize;
 	private double price;
 
-	public Phone() {
+	public Product() {
 		super();
 	}
 
-	public Phone(String manufacturer, String model, double screenSize, double price) {
+	public Product(String manufacturer, String model, double screenSize, double price) {
 		super();
 		this.manufacturer = manufacturer;
 		this.model = model;
