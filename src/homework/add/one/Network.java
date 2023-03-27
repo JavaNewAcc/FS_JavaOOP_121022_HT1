@@ -3,8 +3,7 @@ package homework.add.one;
 import java.util.Arrays;
 
 public class Network {
-	private String[] regPhonesArray = new String[] { "emptySlot", "emptySlot", "emptySlot", "emptySlot", "emptySlot",
-			"emptySlot", "emptySlot", "emptySlot", "emptySlot", "emptySlot" };
+	private String[] regPhonesArray = new String[] { "emptySlot", "emptySlot", "emptySlot", "emptySlot", "emptySlot" };
 	private int counter = 0;
 
 	public Network() {
@@ -20,21 +19,31 @@ public class Network {
 		return regPhonesArray;
 	}
 
-	public void regPhone(String phoneNumber) {
+	public boolean isRegistered(String number) {
 		for (int i = 0; i < regPhonesArray.length; i++) {
-			if (counter == regPhonesArray.length) {
-				System.out.println("Мережа зайнята. Спробуйте пізніше.");
-				return;
+			if (regPhonesArray[i].equals(number)) {
+				System.out.println("Телефон " + number + " вже було зареєстровано в мережі");
+				return true;
 			}
-			if (regPhonesArray[i].equals(phoneNumber)) {
-				System.out.println("Телефон вже було зареєстровано в мережі");
-				return;
-			}
-			if (regPhonesArray[i].equals("emptySlot")) {
-				regPhonesArray[i] = phoneNumber;
-				counter++;
-				System.out.println("Телефон зареєстровано в мережі");
-				return;
+		}
+		return false;
+	}
+
+	public void regPhone(Phone phone) {
+		if (!isRegistered(phone.getNumber())) {
+			for (int i = 0; i < regPhonesArray.length; i++) {
+				if (counter == regPhonesArray.length) {
+					System.out.println("Телефон " + phone.getNumber()
+							+ " не зареєстровано в мережі. Мережа зайнята. Спробуйте пізніше.");
+					return;
+				}
+				if (regPhonesArray[i].equals("emptySlot")) {
+					regPhonesArray[i] = phone.getNumber();
+					counter++;
+					phone.setRegistered(true);
+					System.out.println("Телефон " + phone.getNumber() + " зареєстровано в мережі");
+					return;
+				}
 			}
 		}
 	}
