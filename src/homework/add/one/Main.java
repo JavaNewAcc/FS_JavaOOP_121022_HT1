@@ -4,6 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Network network = new Network();
+		String сallNumber;
 
 		Phone phone1 = new Phone("+38-097-111-22-33", "380971112233", false);
 		Phone phone2 = new Phone("+38-095-222-33-44", "380952223344", false);
@@ -21,8 +22,19 @@ public class Main {
 		phone6.regInNetwork(network);
 		phone7.regInNetwork(network);
 
-		System.out.println(phone1.callOutgoing(phone7));
+		сallNumber = "+38-063-555-66-77";
 
-		phone1.callIncoming(phone7);
+		if (network.isRegistered(сallNumber)) {
+			System.out.println(phone1.callOutgoing(сallNumber));
+		} else {
+			System.out.println("Дзвінок не здійснено. Абонентский номер " + сallNumber + " не зареєстровано в мережі.");
+		}
+
+		if (network.isRegistered(сallNumber)) {
+			phone1.callIncoming(сallNumber);
+		} else {
+			System.out.println(
+					"Вам намагався подзвонити абонент з номером " + сallNumber + ", але зараз він не в мережі.");
+		}
 	}
 }

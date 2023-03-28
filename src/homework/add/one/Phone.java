@@ -44,21 +44,21 @@ public class Phone {
 		network.regPhone(this);
 	}
 
-	public String callOutgoing(Phone phone) {
+	public String callOutgoing(String number) {
 		if (!this.isRegistered()) {
 			return "Дзвінок не здійснено. Ваш телефон не зареєстрований в мережі";
-		} else if (this.getNumber().equals(phone.getNumber())) {
-			return "Дзвінок не здійснено. Номер абонента що викликається не може співпадати з Вашим номером";
-		} else if (!phone.isRegistered()) {
-			return "Дзвінок не здійснено. Телефон абонента, що викликається, не зареєстрований в мережі";
+		} else if (this.getNumber().equals(number)) {
+			return "Дзвінок не здійснено. Номер абонента, що викликається, не може співпадати з Вашим номером";
 		} else {
-			return "Ви успішно здійснили дзвінок";
+			return "Ви успішно здійснили дзвінок на номер " + number;
 		}
 	}
 
-	public void callIncoming(Phone phone) {
-		if (this.isRegistered() && phone.isRegistered()) {
-			System.out.println("Вам надійшов дзвінок з номера " + phone.getNumber());
+	public void callIncoming(String number) {
+		if (this.getNumber().equals(number)) {
+			System.out.println("Вхідних дзвонків немає");
+		} else {
+			System.out.println("Вам надійшов дзвінок з номера " + number);
 		}
 	}
 }

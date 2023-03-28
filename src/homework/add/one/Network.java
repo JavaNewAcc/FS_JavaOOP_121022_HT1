@@ -22,7 +22,6 @@ public class Network {
 	public boolean isRegistered(String number) {
 		for (int i = 0; i < regPhonesArray.length; i++) {
 			if (regPhonesArray[i].equals(number)) {
-				System.out.println("Телефон " + number + " вже було зареєстровано в мережі");
 				return true;
 			}
 		}
@@ -45,6 +44,8 @@ public class Network {
 					return;
 				}
 			}
+		} else {
+			System.out.println("Телефон " + phone.getNumber() + " вже було зареєстровано в мережі");
 		}
 	}
 
